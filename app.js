@@ -13,6 +13,7 @@ app.use(express.json());
 //Incluir las rutas disponibles para los metodos de la API
 require('./rutas/pais.rutas')(app);
 require('./rutas/region.rutas')(app);
+require('./rutas/ciudad.rutas')(app);
 
 const puerto=3030;
 
