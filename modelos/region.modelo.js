@@ -29,7 +29,7 @@ Region.listar = function (idPais, resultado) {
                 resultado(err, null);
             }
             else {
-                resultado(null, res[0].regiones);
+                resultado(null, res.length > 0 ? res[0].regiones : []);
             }
         });
 }
