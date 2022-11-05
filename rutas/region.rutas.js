@@ -9,7 +9,7 @@ module.exports = (app) => {
     app.post("/regiones/agregar/:id", controlRegion.agregar);
 
     //metodo de la API que modifica (UPDATE) una región
-    app.post("/regiones/modificar/:id", controlRegion.modificar);
+    app.post("/regiones/modificar/:id/:nombre", controlRegion.modificar);
 
     //metodo de la API que elimina (DELETE) una región
     app.delete("/regiones/:id/:nombre", controlRegion.eliminar);

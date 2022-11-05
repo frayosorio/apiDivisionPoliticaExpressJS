@@ -7,7 +7,7 @@ const Ciudad = function () { }
 //metodo que obtiene la lista de ciudades
 Ciudad.listar = function (idPais, nombreRegion, resultado) {
     //obtener objeto de conexion a la base de datos
-    const basedatos = bd.obtenerBaseDatos();
+    const basedatos = bd.obtenerBD();
     //Ejecutar la consulta
     basedatos.collection('paises')
         //***** Código Mongo *****
@@ -35,19 +35,14 @@ Ciudad.listar = function (idPais, nombreRegion, resultado) {
                 resultado(err, null);
             }
             else {
-                var ciudades = [];
-                console.log(res[0]);
-                if (res[0]) {
-                    ciudades = res[0].regiones[0].ciudades
-                }
-                resultado(null, ciudades);
+                resultado(null, res[0] && res[0].regiones[0] && res[0].regiones[0].ciudades.length > 0 ? res[0].regiones[0].ciudades : []);
             }
         });
 }
 
 //Metodo que agrega un registro 
 Ciudad.agregar = (idPais, nombreRegion, ciudad, resultado) => {
-    const basedatos = bd.obtenerBaseDatos();
+    const basedatos = bd.obtenerBD();
 
     basedatos.collection('paises')
         //***** Código MongoDB *****
@@ -90,7 +85,7 @@ Ciudad.agregar = (idPais, nombreRegion, ciudad, resultado) => {
 
 //Metodo que modifica un registro 
 Ciudad.modificar = (idPais, nombreRegion, ciudad, resultado) => {
-    const basedatos = bd.obtenerBaseDatos();
+    const basedatos = bd.obtenerBD();
 
     basedatos.collection('paises')
         //***** Código MongoDB *****
@@ -132,7 +127,7 @@ Ciudad.modificar = (idPais, nombreRegion, ciudad, resultado) => {
 
 //Metodo que elimina un registro 
 Ciudad.eliminar = (idPais, nombreRegion, nombreCiudad, resultado) => {
-    const basedatos = bd.obtenerBaseDatos();
+    const basedatos = bd.obtenerBD();
 
     basedatos.collection('paises')
         //***** Código MongoDB *****

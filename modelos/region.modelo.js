@@ -77,7 +77,7 @@ Region.agregar = (idPais, region, resultado) => {
 }
 
 //Metodo que modifica un registro 
-Region.modificar = (idPais, region, resultado) => {
+Region.modificar = (idPais, nombreRegion, region, resultado) => {
     const basedatos = bd.obtenerBD();
 
     basedatos.collection('paises')
@@ -85,11 +85,12 @@ Region.modificar = (idPais, region, resultado) => {
         .updateOne(
             {
                 id: eval(idPais),
-                regiones: { $elemMatch: { nombre: region.nombre } }
+                regiones: { $elemMatch: { nombre: nombreRegion } }
             },
             {
                 $set:
                 {
+                    'regiones.$.nombre': region.nombre,
                     'regiones.$.area': region.area,
                     'regiones.$.poblacion': region.poblacion
                 }

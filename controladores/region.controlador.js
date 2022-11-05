@@ -45,7 +45,7 @@ exports.modificar = (req, res) => {
         res.status(400).send({ message: 'El contenido del mensaje debe tener información con la región' });
     }
 
-    region.modificar(req.params.id, req.body,
+    region.modificar(req.params.id, req.params.nombre, req.body,
         (err, data) => {
             //Verificar si hubo error
             if (err) {
