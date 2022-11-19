@@ -1,5 +1,5 @@
 module.exports = {
-  SERVIDOR : 'localhost',
+  SERVIDOR : 'dockerbddivisionpolitica',
   PUERTO : '27017',
   BASEDATOS : 'divisionpolitica',
   USUARIO : '',
